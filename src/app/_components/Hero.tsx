@@ -1,6 +1,5 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
 // import "leaflet-defaulticon-compatibility";
 // import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
@@ -11,8 +10,8 @@ import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
 import getScrollAnimation from "@/helpers/getScrollAnimation";
 import { Button } from "./ui/button";
 
-import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 const listUser = [
   {
@@ -34,6 +33,10 @@ const listUser = [
 
 export default function Hero({}) {
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
+
+  const Map = dynamic(() => import("./Map"), {
+    ssr: false,
+  });
 
   return (
     <div className="mx-auto mt-16 max-w-screen-xl px-8 xl:px-16" id="about">
@@ -62,22 +65,7 @@ export default function Hero({}) {
 
           <div className="flex w-full">
             <motion.div className="h-full w-full" variants={scrollAnimation}>
-              <MapContainer
-                className="z-20 h-[30rem] w-full"
-                center={[51.505, -0.09]}
-                zoom={13}
-                scrollWheelZoom={true}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[51.505, -0.09]}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
-              </MapContainer>
+              <Map />
             </motion.div>
           </div>
         </motion.div>
