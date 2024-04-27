@@ -20,19 +20,21 @@ import { myHtml, myText } from "@/helpers/email";
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
+type UserRole = "admin" | "maintainer" | "organization" | "standard";
+
 declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
+      role: UserRole;
       // ...other properties
-      // role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    // ...other properties
+    role: UserRole;
+  }
 }
 
 /**
@@ -47,6 +49,7 @@ export const authOptions: NextAuthOptions = {
       user: {
         ...session.user,
         id: user.id,
+        role: user.role,
       },
     }),
   },
