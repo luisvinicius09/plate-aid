@@ -4,11 +4,12 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
     <div className="sticky top-0 h-screen">
-      <aside className="bg-brand-white hidden h-full w-48 flex-col space-y-2 border-r-2 p-2 py-4 md:flex">
+      <aside className="bg-brand-white hidden h-full w-64 flex-col space-y-2 border-r-2 p-2 py-4 md:flex">
         <div className="flex items-center justify-center">
           <a href="/">
             <Image
@@ -24,39 +25,71 @@ export default function Sidebar() {
 
         <hr />
 
-        {/* <a
-          href="#"
-          className="flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-brand-green"
-        >
-          <span className="text-2xl">
-            <HomeIcon className="h-6 w-6" />
-          </span>
-
-          <span>Dashboard</span>
-        </a> */}
-
-        <a
-          href="/orders"
+        <Link
+          href="/dashboard"
           className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
         >
           <span className="text-2xl">
             <ListBulletIcon className="h-6 w-6" />
           </span>
 
-          <span>Pedidos</span>
-        </a>
+          <span>Dashboard</span>
+        </Link>
 
-        <a
-          href="/help"
-          target="_blank"
+        <Link
+          href="/dashboard/aid-requests"
           className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
         >
           <span className="text-2xl">
-            <QuestionMarkCircleIcon className="h-6 w-6" />
+            <ListBulletIcon className="h-6 w-6" />
           </span>
 
-          <span>Ajuda</span>
-        </a>
+          <span>Aid Requests</span>
+        </Link>
+
+        <Link
+          href="/dashboard/donations-requests"
+          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
+        >
+          <span className="text-2xl">
+            <ListBulletIcon className="h-6 w-6" />
+          </span>
+
+          <span>Donation Requests</span>
+        </Link>
+
+        <Link
+          href="/dashboard/org-requests"
+          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
+        >
+          <span className="text-2xl">
+            <ListBulletIcon className="h-6 w-6" />
+          </span>
+
+          <span>Org. Requests</span>
+        </Link>
+
+        <Link
+          href="/dashboard/maintainers-requests"
+          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
+        >
+          <span className="text-2xl">
+            <ListBulletIcon className="h-6 w-6" />
+          </span>
+
+          <span>Maintainers Requests</span>
+        </Link>
+
+        <Link
+          href="/dashboard/users"
+          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
+        >
+          <span className="text-2xl">
+            <ListBulletIcon className="h-6 w-6" />
+          </span>
+
+          <span>Users</span>
+        </Link>
 
         <div className="flex h-full flex-col items-center justify-end">
           <p className="text-sm text-gray-400">

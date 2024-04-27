@@ -20,11 +20,11 @@ export default function SignInLayout({
 
         <div className="relative flex w-full items-center justify-center px-16">
           <Image
-            alt=""
-            src="/images/login_image.png"
+            alt="Login Image"
+            src="/login-image.png"
             objectFit="cover"
-            width={335}
-            height={356}
+            width={435}
+            height={456}
             loading="eager"
           />
         </div>
