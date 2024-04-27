@@ -12,6 +12,7 @@ import getScrollAnimation from "@/helpers/getScrollAnimation";
 import { Button } from "./ui/button";
 
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
+import Link from "next/link";
 
 const listUser = [
   {
@@ -54,7 +55,9 @@ export default function Hero({}) {
               be donated
             </p>
 
-            <Button size="lg">Help us out</Button>
+            <Link href="/forms/general">
+              <Button size="lg">Help us out</Button>
+            </Link>
           </div>
 
           <div className="flex w-full">

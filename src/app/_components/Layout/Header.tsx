@@ -96,7 +96,7 @@ export default function Header() {
           </ul>
           <div className="col-start-10 col-end-12 flex items-center justify-end font-medium">
             <Link href="/login">
-              <Button variant="outline">Sign In</Button>
+              <Button variant="outline">Dashboard</Button>
             </Link>
           </div>
         </nav>
