@@ -77,5 +77,6 @@
 
 .custom-bg {
   background-image: url("/blur-bg.png");
-
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

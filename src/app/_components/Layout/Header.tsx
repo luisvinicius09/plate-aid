@@ -43,6 +43,7 @@ export default function Header() {
               spy={true}
               smooth={true}
               duration={1000}
+              offset={-100}
               onSetActive={() => {
                 setActiveLink("standard");
               }}
@@ -62,6 +63,7 @@ export default function Header() {
               spy={true}
               smooth={true}
               duration={1000}
+              offset={-100}
               onSetActive={() => {
                 setActiveLink("organization");
               }}
@@ -81,6 +83,7 @@ export default function Header() {
               spy={true}
               smooth={true}
               duration={1000}
+              offset={-100}
               onSetActive={() => {
                 setActiveLink("maintainers");
               }}
@@ -95,7 +98,7 @@ export default function Header() {
             </LinkScroll>
           </ul>
           <div className="col-start-10 col-end-12 flex items-center justify-end font-medium">
-            <Link href="/login">
+            <Link href="/dashboard">
               <Button variant="outline">Dashboard</Button>
             </Link>
           </div>

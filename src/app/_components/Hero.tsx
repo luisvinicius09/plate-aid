@@ -1,8 +1,5 @@
 "use client";
 
-// import "leaflet-defaulticon-compatibility";
-// import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-
 import React, { useMemo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
