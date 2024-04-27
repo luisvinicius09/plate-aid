@@ -5,9 +5,17 @@ import { Input } from "@/app/_components/ui/input";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 export default function VerifyCodePage() {
+  return (
+    <Suspense>
+      <VerifyCode />
+    </Suspense>
+  );
+}
+
+function VerifyCode() {
   const searchParams = useSearchParams();
 
   const [code, setCode] = useState("");
