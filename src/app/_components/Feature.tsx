@@ -8,20 +8,13 @@ import getScrollAnimation from "@/helpers/getScrollAnimation";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-const features = [
-  "Powerfull online protection.",
-  "Internet without borders.",
-  "Supercharged VPN",
-  "No specific time limits.",
-];
-
 const Feature = () => {
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
 
   return (
     <div
       className="mx-auto mb-6 mt-8 max-w-screen-xl px-6 sm:mb-14 sm:mt-14 sm:px-8 lg:px-16"
-      id="feature"
+      id="maintainers"
     >
       <div className="p y-8 my-12 grid grid-flow-row grid-cols-1 gap-8  sm:grid-flow-col sm:grid-cols-2">
         <ScrollAnimationWrapper className="flex w-full justify-end">

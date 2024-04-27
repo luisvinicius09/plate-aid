@@ -22,7 +22,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/_components/ui/card";
-import { useToast } from '@/app/_components/ui/use-toast';
+import { useToast } from "@/app/_components/ui/use-toast";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -53,8 +53,8 @@ export default function SignInPage() {
 
         if (res?.error) {
           toast({
-            title: "Uh oh! Algo de errado ocorreu.",
-            description: "Tente novamente mais tarde ou contate o suporte.",
+            title: "Uh oh! Something went wrong",
+            description: "Try again later or contact the support team",
             variant: "destructive",
             duration: 6000,
           });
@@ -64,10 +64,10 @@ export default function SignInPage() {
       })
       .catch(() => {
         toast({
-         title: "Uh oh! Algo de errado ocorreu.",
-         description: "Tente novamente mais tarde ou contate o suporte.",
-         variant: "destructive",
-         duration: 6000,
+          title: "Uh oh! Something went wrong",
+          description: "Try again later or contact the support team",
+          variant: "destructive",
+          duration: 6000,
         });
       });
   }
@@ -76,8 +76,8 @@ export default function SignInPage() {
     <div className="flex h-screen items-center justify-center">
       <Card className="min-w-96">
         <CardHeader>
-          <CardTitle>Plate Aid</CardTitle>
-          <CardDescription>Log In</CardDescription>
+          <CardTitle>Sign In to Plate Aid</CardTitle>
+          <CardDescription>Your help is important to us</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -101,7 +101,7 @@ export default function SignInPage() {
               <Button
                 type="submit"
                 disabled={form.formState.isSubmitting}
-                className="w-full mt-6"
+                className="mt-6 w-full"
               >
                 {form.formState.isSubmitting ? <p>Wait</p> : <p>Log In</p>}
               </Button>

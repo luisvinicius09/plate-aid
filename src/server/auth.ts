@@ -65,7 +65,8 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     EmailProvider({
-      from: "suporte@plateaid.biz",
+      // from: "suporte@plateaid.biz",
+      from: "plateaid404@gmail.com",
       maxAge: 10 * 60,
       generateVerificationToken: async () => {
         const random = getRandomValues(new Uint8Array(8));
@@ -92,7 +93,8 @@ export const authOptions: NextAuthOptions = {
 
         const result = await transport.sendMail({
           to: identifier,
-          from: `PlateAid <suporte@plateaid.biz>`,
+          // from: `PlateAid <suporte@plateaid.biz>`,
+          from: `PlateAid <plateaid404@gmail.com>`,
           subject: "Login PlateAid",
           text: myText({ url }),
           html: myHtml({ url, theme, token }),

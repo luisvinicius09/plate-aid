@@ -11,6 +11,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: ^0.7.0
         version: 0.7.0(nodemailer@6.9.13)
+      '@heroicons/react':
+        specifier: ^2.1.3
+        version: 2.1.3(react@18.2.0)
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.3(react@18.2.0))
@@ -83,6 +86,9 @@ importers:
       react-leaflet:
         specifier: ^4.2.1
         version: 4.2.1(leaflet@1.9.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-scroll:
+        specifier: ^1.9.0
+        version: 1.9.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -117,6 +123,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.19
         version: 18.3.0
+      '@types/react-scroll':
+        specifier: ^1.8.10
+        version: 1.8.10
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.1.1
         version: 7.7.1(@typescript-eslint/parser@7.7.1(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
@@ -471,6 +480,11 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@heroicons/react@2.1.3':
+    resolution: {integrity: sha512-fEcPfo4oN345SoqdlCDdSa4ivjaKbk0jTd+oubcgNxnNgAfzysfwWfQUr+51wigiWHQQRiZNd1Ao0M5Y3M2EGg==}
+    peerDependencies:
+      react: '>= 16'
 
   '@hono/node-server@1.11.1':
     resolution: {integrity: sha512-GW1Iomhmm1o4Z+X57xGby8A35Cu9UZLL7pSMdqDBkD99U5cywff8F+8hLk5aBTzNubnsFAvWQ/fZjNwPsEn9lA==}
@@ -860,6 +874,9 @@ packages:
 
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+
+  '@types/react-scroll@1.8.10':
+    resolution: {integrity: sha512-RD4Z7grbdNGOKwKnUBKar6zNxqaW3n8m9QSrfvljW+gmkj1GArb8AFBomVr6xMOgHPD3v1uV3BrIf01py57daQ==}
 
   '@types/react@18.3.1':
     resolution: {integrity: sha512-V0kuGBX3+prX+DQ/7r2qsv1NsdfnCLnTgnRJ1pYnxykBhGMz+qj+box5lq7XsO5mtZsBqpjwwTu/7wszPfMBcw==}
@@ -2335,6 +2352,12 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
+  react-scroll@1.9.0:
+    resolution: {integrity: sha512-mamNcaX9Ng+JeSbBu97nWwRhYvL2oba+xR2GxvyXsbDeGP+gkYIKZ+aDMMj/n20TbV9SCWm/H7nyuNTSiXA6yA==}
+    peerDependencies:
+      react: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -2877,6 +2900,10 @@ snapshots:
 
   '@eslint/js@8.57.0': {}
 
+  '@heroicons/react@2.1.3(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+
   '@hono/node-server@1.11.1': {}
 
   '@hono/zod-validator@0.2.1(hono@4.2.8)(zod@3.23.4)':
@@ -3210,6 +3237,10 @@ snapshots:
   '@types/prop-types@15.7.12': {}
 
   '@types/react-dom@18.3.0':
+    dependencies:
+      '@types/react': 18.3.1
+
+  '@types/react-scroll@1.8.10':
     dependencies:
       '@types/react': 18.3.1
 
@@ -4847,6 +4878,13 @@ snapshots:
     dependencies:
       '@react-leaflet/core': 2.1.0(leaflet@1.9.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       leaflet: 1.9.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  react-scroll@1.9.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      lodash.throttle: 4.1.1
+      prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 

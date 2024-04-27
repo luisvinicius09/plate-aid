@@ -12,9 +12,9 @@ export default function SignInLayout({
         <a href="/">
           <Image
             alt="Plate Aid"
-            src="/images/veiculo_pago_black_white.svg"
-            width="115"
-            height="60"
+            src="/plate-aid-black.png"
+            width={154}
+            height={160}
           />
         </a>
 
@@ -34,9 +34,9 @@ export default function SignInLayout({
             We help food be <br /> distributed everywhere
           </h2>
 
-          <p>
-            {/* Regularize seus documentos com praticidade. Mantenha seu veículo em
-            conformidade e contribua para a mobilidade segura */}
+          <p className="px-8">
+            Bridging the Gap Between Hunger and Hope, One Nourishing Meal, One
+            Heartfelt Connection at a Time
           </p>
         </div>
       </div>

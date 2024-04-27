@@ -1,0 +1,69 @@
+import {
+  HomeIcon,
+  ListBulletIcon,
+  QuestionMarkCircleIcon,
+} from "@heroicons/react/24/outline";
+import Image from "next/image";
+
+export default function Sidebar() {
+  return (
+    <div className="sticky top-0 h-screen">
+      <aside className="bg-brand-white hidden h-full w-48 flex-col space-y-2 border-r-2 p-2 py-4 md:flex">
+        <div className="flex items-center justify-center">
+          <a href="/">
+            <Image
+              src={"/plate-aid-black.png"}
+              width="115"
+              height="60"
+              className={"object-cover"}
+              alt="Hero Illustration"
+              loading="eager"
+            />
+          </a>
+        </div>
+
+        <hr />
+
+        {/* <a
+          href="#"
+          className="flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-brand-green"
+        >
+          <span className="text-2xl">
+            <HomeIcon className="h-6 w-6" />
+          </span>
+
+          <span>Dashboard</span>
+        </a> */}
+
+        <a
+          href="/orders"
+          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
+        >
+          <span className="text-2xl">
+            <ListBulletIcon className="h-6 w-6" />
+          </span>
+
+          <span>Pedidos</span>
+        </a>
+
+        <a
+          href="/help"
+          target="_blank"
+          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
+        >
+          <span className="text-2xl">
+            <QuestionMarkCircleIcon className="h-6 w-6" />
+          </span>
+
+          <span>Ajuda</span>
+        </a>
+
+        <div className="flex h-full flex-col items-center justify-end">
+          <p className="text-sm text-gray-400">
+            ©{new Date().getFullYear()} - PlateAid
+          </p>
+        </div>
+      </aside>
+    </div>
+  );
+}
