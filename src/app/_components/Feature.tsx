@@ -5,6 +5,8 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
 import getScrollAnimation from "@/helpers/getScrollAnimation";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const features = [
   "Powerfull online protection.",
@@ -37,34 +39,29 @@ const Feature = () => {
 
         <ScrollAnimationWrapper>
           <motion.div
-            className="ml-auto flex w-full flex-col items-end justify-center lg:w-9/12"
+            className="ml-auto flex w-full flex-col justify-center lg:w-9/12"
             variants={scrollAnimation}
           >
             <h3 className="text-black-600 text-3xl font-medium leading-relaxed lg:text-4xl">
-              We Provide Many Features You Can Use
+              We need maintainers
             </h3>
+
             <p className="text-black-500 my-2">
-              You can explore the features that we provide with fun and have
-              their own functions each feature.
+              Maintainers come from all walks of life: volunteers, activists,
+              community leaders, and compassionate individuals eager to make a
+              tangible difference.
             </p>
-            <ul className="text-black-500 ml-8 list-inside self-start">
-              {features.map((feature, index) => (
-                <motion.li
-                  className="circle-check custom-list relative"
-                  custom={{ duration: 2 + index }}
-                  variants={scrollAnimation}
-                  key={feature}
-                  whileHover={{
-                    scale: 1.1,
-                    transition: {
-                      duration: 0.2,
-                    },
-                  }}
-                >
-                  {feature}
-                </motion.li>
-              ))}
-            </ul>
+
+            <p>
+              Whether you aree a seasoned advocate or someone new to the cause,
+              if you have a heart for helping others, you can be a maintainer.
+            </p>
+          </motion.div>
+
+          <motion.div variants={scrollAnimation} className="flex justify-end">
+            <Link href="/forms/maintainers">
+              <Button>Send us your information</Button>
+            </Link>
           </motion.div>
         </ScrollAnimationWrapper>
       </div>

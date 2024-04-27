@@ -7,14 +7,22 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/app/_components/ui/form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/app/_components/ui/input";
+import { Button } from "@/app/_components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/app/_components/ui/card";
+import { useToast } from '@/app/_components/ui/use-toast';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -22,6 +30,8 @@ const formSchema = z.object({
 
 export default function SignInPage() {
   const router = useRouter();
+
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,51 +52,63 @@ export default function SignInPage() {
         }
 
         if (res?.error) {
-          // toast({
-          //   title: "Uh oh! Algo de errado ocorreu.",
-          //   description: "Tente novamente mais tarde ou contate o suporte.",
-          //   variant: "destructive",
-          //   duration: 6000,
-          // });
+          toast({
+            title: "Uh oh! Algo de errado ocorreu.",
+            description: "Tente novamente mais tarde ou contate o suporte.",
+            variant: "destructive",
+            duration: 6000,
+          });
 
           return;
         }
       })
       .catch(() => {
-        // toast({
-        //  title: "Uh oh! Algo de errado ocorreu.",
-        //  description: "Tente novamente mais tarde ou contate o suporte.",
-        //  variant: "destructive",
-        //  duration: 6000,
-        // });
+        toast({
+         title: "Uh oh! Algo de errado ocorreu.",
+         description: "Tente novamente mais tarde ou contate o suporte.",
+         variant: "destructive",
+         duration: 6000,
+        });
       });
   }
 
   return (
-    <div className="">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
+    <div className="flex h-screen items-center justify-center">
+      <Card className="min-w-96">
+        <CardHeader>
+          <CardTitle>Plate Aid</CardTitle>
+          <CardDescription>Log In</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
 
-                <FormControl>
-                  <Input placeholder="Email" {...field} />
-                </FormControl>
+                    <FormControl>
+                      <Input placeholder="Email" {...field} />
+                    </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <Button type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? <p>Wait</p> : <p>Log In</p>}
-          </Button>
-        </form>
-      </Form>
+              <Button
+                type="submit"
+                disabled={form.formState.isSubmitting}
+                className="w-full mt-6"
+              >
+                {form.formState.isSubmitting ? <p>Wait</p> : <p>Log In</p>}
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </div>
   );
 }

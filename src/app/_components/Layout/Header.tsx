@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 // import { Link as LinkScroll } from "react-scroll";
-import ButtonOutline from "../misc/ButtonOutline";
-// import LogoVPN from "../../public/assets/Logo.svg";
+import { Button } from "../ui/button";
+import Image from "next/image";
 
 export default function Header() {
   const [activeLink, setActiveLink] = useState(null);
@@ -18,14 +18,20 @@ export default function Header() {
     <>
       <header
         className={
-          "bg-white-500 fixed top-0  z-30 w-full transition-all " +
+          "fixed top-0 z-30 w-full bg-white transition-all " +
           (scrollActive ? " pt-0 shadow-md" : " pt-4")
         }
       >
         <nav className="mx-auto grid max-w-screen-xl grid-flow-col px-6 py-3 sm:px-8 sm:py-4 lg:px-16">
           <div className="col-start-1 col-end-2 flex items-center">
-            {/* <LogoVPN className="h-8 w-auto" /> */}
+            <Image
+              alt="Plate Aid"
+              src="/plate-aid-black.png"
+              width={154}
+              height={160}
+            />
           </div>
+
           <ul className="text-black-500 col-start-4 col-end-8 hidden items-center  lg:flex">
             {/* <LinkScroll
               activeClass="active"
@@ -45,6 +51,7 @@ export default function Header() {
             >
               About
             </LinkScroll>
+
             <LinkScroll
               activeClass="active"
               to="feature"
@@ -63,6 +70,7 @@ export default function Header() {
             >
               Feature
             </LinkScroll>
+
             <LinkScroll
               activeClass="active"
               to="pricing"
@@ -81,6 +89,7 @@ export default function Header() {
             >
               Pricing
             </LinkScroll>
+            
             <LinkScroll
               activeClass="active"
               to="testimoni"
@@ -101,12 +110,9 @@ export default function Header() {
             </LinkScroll> */}
           </ul>
           <div className="col-start-10 col-end-12 flex items-center justify-end font-medium">
-            <Link href="/">
-              {/* <a className="text-black-600 mx-2 capitalize tracking-wide transition-all hover:text-orange-500 sm:mx-4">
-                  Sign In
-              </a> */}
+            <Link href="/login">
+              <Button variant="outline">Sign In</Button>
             </Link>
-            <ButtonOutline>Sign Up</ButtonOutline>
           </div>
         </nav>
       </header>
@@ -246,7 +252,6 @@ export default function Header() {
           </ul>
         </div>
       </nav>
-      {/* End Mobile Navigation */}
     </>
   );
 }

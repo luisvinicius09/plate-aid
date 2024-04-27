@@ -1,8 +1,4 @@
 import React from "react";
-// import LogoVPN from "../../public/assets/Logo.svg";
-// import Facebook from "../../public/assets/Icon/facebook.svg";
-// import Twitter from "../../public/assets/Icon/twitter.svg";
-// import Instagram from "../../public/assets/Icon/instagram.svg";
 
 export default function Footer() {
   return (
@@ -11,78 +7,42 @@ export default function Footer() {
         <div className="col-start-1 col-end-4 row-span-2 flex flex-col items-start sm:col-span-4 sm:col-end-5 ">
           {/* <LogoVPN className="h-8 w-auto mb-6" /> */}
           <p className="mb-4">
-            <strong className="font-medium">LaslesVPN</strong> is a private
-            virtual network that has unique features and has high security.
+            <strong className="font-medium">Plate Aid</strong> is bridging the
+            Gap Between Hunger and Hope, One Nourishing Meal, One Heartfelt
+            Connection at a Time.
           </p>
-          <div className="-mx-2 mb-8 mt-2 flex w-full">
-            <div className="bg-white-500 mx-2 flex items-center justify-center rounded-full p-2 shadow-md">
-              {/* <Facebook className="h-6 w-6" /> */}
-            </div>
-            <div className="bg-white-500 mx-2 flex items-center justify-center rounded-full p-2 shadow-md">
-              {/* <Twitter className="h-6 w-6" /> */}
-            </div>
-            <div className="bg-white-500 mx-2 flex items-center justify-center rounded-full p-2 shadow-md">
-              {/* <Instagram className="h-6 w-6" /> */}
-            </div>
-          </div>
+
           <p className="text-gray-400">
-            ©{new Date().getFullYear()} - LaslesVPN
+            ©{new Date().getFullYear()} - Plate Aid
           </p>
         </div>
-        <div className=" row-span-2 flex flex-col sm:col-span-2 sm:col-start-7 sm:col-end-9">
-          <p className="text-black-600 mb-4 text-lg font-medium">Product</p>
+
+        <div className=" row-span-2 flex flex-col sm:col-span-2 sm:col-start-9 sm:col-end-11">
+          <p className="text-black-600 mb-4 text-lg font-medium">Utils</p>
           <ul className="text-black-500 ">
             <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Download{" "}
+              About Us
             </li>
             <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Pricing{" "}
+              Contact
             </li>
             <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Locations{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Server{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Countries{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Blog{" "}
+              Blog
             </li>
           </ul>
         </div>
-        <div className="row-span-2 flex flex-col sm:col-span-2 sm:col-start-9 sm:col-end-11">
+
+        <div className="row-span-2 flex flex-col sm:col-span-2 sm:col-start-11 sm:col-end-13">
           <p className="text-black-600 mb-4 text-lg font-medium">Engage</p>
           <ul className="text-black-500">
             <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              LaslesVPN ?{" "}
+              Github
             </li>
             <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              FAQ{" "}
+              FAQ
             </li>
             <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Tutorials{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              About Us{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Privacy Policy{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Terms of Service{" "}
-            </li>
-          </ul>
-        </div>
-        <div className="row-span-2 flex flex-col sm:col-span-2 sm:col-start-11 sm:col-end-13">
-          <p className="text-black-600 mb-4 text-lg font-medium">Earn Money</p>
-          <ul className="text-black-500">
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Affiliate{" "}
-            </li>
-            <li className="my-2 cursor-pointer transition-all hover:text-orange-500">
-              Become Partner{" "}
+              Food List
             </li>
           </ul>
         </div>

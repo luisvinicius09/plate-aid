@@ -1,7 +1,7 @@
 import Feature from "./_components/Feature";
 import Hero from "./_components/Hero";
-import Layout from "./_components/Layout/Layout";
-import Pricing from "./_components/Pricing";
+import Footer from "./_components/Layout/Footer";
+import Header from "./_components/Layout/Header";
 
 export default async function Home() {
   return (
@@ -12,13 +12,19 @@ export default async function Home() {
     //     </h1>
     //   </div>
     // </main>
+
     <main>
-      {/* <SeoHead title="LaslesVPN Landing Page" /> */}
-      <Layout>
-        <Hero />
-        <Feature />
-        <Pricing />
-      </Layout>
+      <Header />
+
+      <Hero />
+
+      <Feature />
+
+      <Feature />
+
+      <Feature />
+
+      <Footer />
     </main>
   );
 }

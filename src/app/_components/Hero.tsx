@@ -1,27 +1,33 @@
 "use client";
 
+import "leaflet/dist/leaflet.css";
+// import "leaflet-defaulticon-compatibility";
+// import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+
 import React, { useMemo } from "react";
 import Image from "next/image";
-import ButtonPrimary from "./misc/ButtonPrimary";
 import { motion } from "framer-motion";
 import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
 import getScrollAnimation from "@/helpers/getScrollAnimation";
+import { Button } from "./ui/button";
+
+import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 
 const listUser = [
   {
-    name: "Users",
-    number: "390",
-    // icon: "/assets/Icon/heroicons_sm-user.svg",
+    name: "People helped",
+    number: "100",
+    icon: "/person.png",
   },
   {
-    name: "Locations",
+    name: "Comunities helped",
     number: "20",
-    // icon: "/assets/Icon/gridicons_location.svg",
+    icon: "/community.png",
   },
   {
-    name: "Server",
+    name: "Food Donated",
     number: "50",
-    // icon: "/assets/Icon/bx_bxs-server.svg",
+    icon: "/food.png",
   },
 ];
 
@@ -29,7 +35,7 @@ export default function Hero({}) {
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
 
   return (
-    <div className="mx-auto mt-24 max-w-screen-xl px-8 xl:px-16" id="about">
+    <div className="mx-auto mt-16 max-w-screen-xl px-8 xl:px-16" id="about">
       <ScrollAnimationWrapper>
         <motion.div
           className="grid grid-flow-row grid-rows-2 gap-8 py-6 sm:grid-flow-col sm:grid-cols-2 sm:py-16 md:grid-rows-1"
@@ -37,28 +43,43 @@ export default function Hero({}) {
         >
           <div className=" row-start-2 flex flex-col items-start justify-center sm:row-start-1">
             <h1 className="text-black-600 text-3xl font-medium leading-normal lg:text-4xl xl:text-5xl">
-              Want anything to be easy with <strong>LaslesVPN</strong>.
+              <span className="text-2xl">Connecting Communities,</span>
+              <br />
+              One Meal at a Time.
             </h1>
+
             <p className="text-black-500 mb-6 mt-4">
-              Provide a network for all your needs with ease and fun using
-              LaslesVPN discover interesting features from us.
+              You can check out our current mapping of communities on the right,
+              we are always looking for more information and food available to
+              be donated
             </p>
-            <ButtonPrimary>Get Started</ButtonPrimary>
+
+            <Button size="lg">Help us out</Button>
           </div>
+
           <div className="flex w-full">
             <motion.div className="h-full w-full" variants={scrollAnimation}>
-              <Image
-                src="/assets/Illustration1.png"
-                alt="VPN Illustrasi"
-                quality={100}
-                width={612}
-                height={383}
-                layout="responsive"
-              />
+              <MapContainer
+                className="z-20 h-[30rem] w-full"
+                center={[51.505, -0.09]}
+                zoom={13}
+                scrollWheelZoom={true}
+              >
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[51.505, -0.09]}>
+                  <Popup>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                  </Popup>
+                </Marker>
+              </MapContainer>
             </motion.div>
           </div>
         </motion.div>
       </ScrollAnimationWrapper>
+
       <div className="relative flex w-full">
         <ScrollAnimationWrapper className="bg-white-500 z-10 grid w-full grid-flow-row grid-cols-1 divide-y-2 divide-gray-100 rounded-lg py-9 sm:grid-flow-row sm:grid-cols-3 sm:divide-x-2 sm:divide-y-0">
           {listUser.map((listUsers, index) => (
@@ -70,8 +91,14 @@ export default function Hero({}) {
             >
               <div className="mx-auto flex w-40 sm:w-auto">
                 <div className="mr-6 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100">
-                  {/* <img src={listUsers.icon} className="h-6 w-6" /> */}
+                  <Image
+                    alt="icon"
+                    src={listUsers.icon}
+                    width={24}
+                    height={24}
+                  />
                 </div>
+
                 <div className="flex flex-col">
                   <p className="text-black-600 text-xl font-bold">
                     {listUsers.number}+
@@ -82,6 +109,7 @@ export default function Hero({}) {
             </motion.div>
           ))}
         </ScrollAnimationWrapper>
+
         <div
           className="bg-black-600 roudned-lg absolute left-0 right-0 top-0 mx-auto mt-8 h-64 w-11/12 opacity-5 sm:h-48"
           style={{ filter: "blur(114px)" }}
