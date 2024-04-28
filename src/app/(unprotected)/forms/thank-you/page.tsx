@@ -9,9 +9,10 @@ export default function ThanksPage() {
         </h1>
 
         <p>We will enter in contact by your email.</p>
+        <p>You can check your request status in the dashboard.</p>
       </div>
 
-      <Image alt="Image here" src="" width={100} height={100} />
+      {/* <Image alt="Image here" src="" width={100} height={100} /> */}
     </div>
   );
 }

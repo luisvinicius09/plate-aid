@@ -1,7 +1,7 @@
 import {
-  DataTableMaintainer,
-  type Maintainer,
-} from "@/app/_components/data-tables/DataTableMaintainer";
+  DataTableDonationAndAid,
+  type GeneralRequest,
+} from "@/app/_components/data-tables/DataTableDonationAndAid";
 import { env } from "@/env";
 import { getServerAuthSession } from "@/server/auth";
 import { MongoClient } from "mongodb";
@@ -14,7 +14,7 @@ export default async function DashboardOrgRequests() {
     redirect("/login");
   }
 
-  if (session.user.role !== "admin") {
+  if (session.user.role === "standard") {
     redirect("/dashboard");
   }
 
@@ -23,19 +23,19 @@ export default async function DashboardOrgRequests() {
   await client.connect();
   const db = client.db("forms");
 
-  const collection = db.collection("maintainerRequests");
+  const collection = db.collection("generalRequests");
 
-  const maintainers = (await collection
+  const generalRequests = (await collection
     .find({})
-    .toArray()) as unknown as Maintainer[];
+    .toArray()) as unknown as GeneralRequest[];
 
   await client.close();
 
   return (
     <>
-      <p className="text-2xl">Maintainers Requests</p>
+      <p className="text-2xl">Donations & Aid Requests</p>
 
-      <DataTableMaintainer data={maintainers} />
+      <DataTableDonationAndAid data={generalRequests} />
     </>
   );
 }

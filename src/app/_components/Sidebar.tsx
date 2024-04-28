@@ -35,27 +35,15 @@ export default function Sidebar() {
 
           <span>Dashboard</span>
         </Link>
-
         <Link
-          href="/dashboard/aid-requests"
+          href="/dashboard/donations-and-aid-requests"
           className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
         >
           <span className="text-2xl">
             <ListBulletIcon className="h-6 w-6" />
           </span>
 
-          <span>Aid Requests</span>
-        </Link>
-
-        <Link
-          href="/dashboard/donations-requests"
-          className="hover:text-brand-green flex space-x-1 rounded-md px-2 py-3 hover:bg-gray-100"
-        >
-          <span className="text-2xl">
-            <ListBulletIcon className="h-6 w-6" />
-          </span>
-
-          <span>Donation Requests</span>
+          <span>Donation & Aid Requests</span>
         </Link>
 
         <Link

@@ -21,6 +21,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import dynamic from "next/dynamic";
+import { useToast } from "@/app/_components/ui/use-toast";
+import { useRouter } from "next/navigation";
+import { api } from '@/trpc/react';
 
 const formSchema = z.object({
   name: z.string(),
@@ -32,6 +35,10 @@ const formSchema = z.object({
 });
 
 export default function GeneralForm() {
+  const router = useRouter();
+
+  const { toast } = useToast();
+
   const Map = dynamic(() => import("../_components/GeneralRequestMap"), {
     ssr: false,
   });
@@ -48,8 +55,24 @@ export default function GeneralForm() {
     },
   });
 
-  function onSubmit() {
-    console.log("works");
+  const generalMutation = api.forms.newGeneralRequest.useMutation({
+    onSuccess: () => {
+      router.push("/forms/thank-you");
+    },
+    onError: () => {
+      console.error("something went wrong creating the order");
+
+      toast({
+        title: "Uh oh! Something went wrong",
+        description: "Try again later or contact the support team",
+        variant: "destructive",
+        duration: 6000,
+      });
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    return await generalMutation.mutateAsync(values);
   }
 
   function getCoordinatesFromMap(coords: string) {
@@ -216,7 +239,7 @@ export default function GeneralForm() {
                   donating.
                 </p>
 
-                <p>choose products to donate or request</p>
+                <p>choose products to donate or request - not finished</p>
               </div>
 
               <Button type="submit">Submit Request</Button>
