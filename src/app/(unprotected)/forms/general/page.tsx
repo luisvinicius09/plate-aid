@@ -24,6 +24,7 @@ import dynamic from "next/dynamic";
 import { useToast } from "@/app/_components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { api } from "@/trpc/react";
+import { Suspense, useEffect, useState } from "react";
 
 const formSchema = z.object({
   name: z.string(),
@@ -34,7 +35,15 @@ const formSchema = z.object({
   coordinates: z.string().optional(),
 });
 
-export default function GeneralForm() {
+export default function General() {
+  return (
+    <Suspense>
+      <GeneralForm />
+    </Suspense>
+  );
+}
+
+function GeneralForm() {
   const router = useRouter();
 
   const { toast } = useToast();
@@ -42,6 +51,12 @@ export default function GeneralForm() {
   const Map = dynamic(() => import("../_components/GeneralRequestMap"), {
     ssr: false,
   });
+
+  const [coords, setCoords] = useState("");
+
+  useEffect(() => {
+    console.log(coords);
+  }, [coords]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -72,14 +87,11 @@ export default function GeneralForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // return await generalMutation.mutateAsync(values);
+    return await generalMutation.mutateAsync(values);
   }
 
   function getCoordinatesFromMap(coords: string) {
-    if (!coords) return;
-
-    return form.setValue("coordinates", coords);
+    form.setValue("coordinates", coords);
   }
 
   return (
@@ -218,13 +230,18 @@ export default function GeneralForm() {
                 <FormField
                   name="coordinates"
                   control={form.control}
-                  disabled
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Coordinates</FormLabel>
 
                       <FormControl>
-                        <Input placeholder="Coordinates" {...field} />
+                        <Input
+                          placeholder="Coordinates"
+                          {...field}
+                          onChange={(e) => {
+                            setCoords(e.target.value);
+                          }}
+                        />
                       </FormControl>
 
                       <FormMessage />

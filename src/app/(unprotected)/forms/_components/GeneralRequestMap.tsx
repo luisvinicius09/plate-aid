@@ -9,40 +9,34 @@ import {
   Marker,
   Popup,
   TileLayer,
-  useMap,
+  useMapEvent,
   useMapEvents,
 } from "react-leaflet";
 import { useState } from "react";
-
-function MarkerOnClick({
-  passCoordinatesToForm,
-}: {
-  passCoordinatesToForm: (args: string) => void;
-}) {
-  const [position, setPosition] = useState<{ lat: number; lng: number }>({
-    lat: 50,
-    lng: 20,
-  });
-
-  useMapEvents({
-    click(e) {
-      setPosition(e.latlng);
-      passCoordinatesToForm(`${e.latlng.lat}, ${e.latlng.lng}`);
-    },
-  });
-
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>You are here</Popup>
-    </Marker>
-  );
-}
 
 export default function GeneralRequestMap({
   passCoordinatesToForm,
 }: {
   passCoordinatesToForm: (args: string) => void;
 }) {
+  function MarkerOnClick() {
+    const [position, setPosition] = useState<{
+      lat: number;
+      lng: number;
+    } | null>(null);
+
+    useMapEvent("click", (e) => {
+      setPosition(e.latlng);
+      passCoordinatesToForm(`${e.latlng.lat}, ${e.latlng.lng}`);
+    });
+
+    return position === null ? null : (
+      <Marker position={position}>
+        <Popup>Your marker</Popup>
+      </Marker>
+    );
+  }
+
   return (
     <MapContainer
       center={[6.315298538330033, 20.917968750000004]}
@@ -55,7 +49,7 @@ export default function GeneralRequestMap({
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <MarkerOnClick passCoordinatesToForm={passCoordinatesToForm} />
+      <MarkerOnClick />
     </MapContainer>
   );
 }
