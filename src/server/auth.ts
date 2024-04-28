@@ -9,10 +9,11 @@ import EmailProvider from "next-auth/providers/email";
 
 import { env } from "@/env";
 import { db } from "@/server/db";
-import { createTable } from "@/server/db/schema";
+import { createTable, users } from "@/server/db/schema";
 import { getRandomValues } from "crypto";
 import { createTransport } from "nodemailer";
 import { myHtml, myText } from "@/helpers/email";
+import { eq } from "drizzle-orm";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -44,14 +45,21 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-        role: user.role,
-      },
-    }),
+    session: async ({ session, user }) => {
+      const [role] = await db
+        .select({ role: users.role })
+        .from(users)
+        .where(eq(users.id, user.id));
+
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+          role: role?.role,
+        },
+      };
+    },
   },
   session: {
     maxAge: 1 * 24 * 60 * 60, // 1 days

@@ -1,3 +1,4 @@
+import { DataTable } from "@/app/_components/DataTable";
 import { getServerAuthSession } from "@/server/auth";
 import { redirect } from "next/navigation";
 
@@ -12,5 +13,11 @@ export default async function DashboardUsers() {
     redirect("/dashboard");
   }
 
-  return null;
+  return (
+    <>
+      <p className="text-2xl">User List</p>
+
+      <DataTable />
+    </>
+  );
 }

@@ -22,7 +22,7 @@ export default function ProtectedLayout({
           />
         </div>
 
-        <div className="container relative z-30 mx-2 xl:mx-auto mt-16 rounded-lg bg-white py-8 shadow-lg">
+        <div className="container relative z-30 mx-2 mb-16 mt-16 rounded-lg bg-white py-8 shadow-lg xl:mx-auto">
           {children}
         </div>
       </div>
