@@ -23,7 +23,7 @@ import { z } from "zod";
 import dynamic from "next/dynamic";
 import { useToast } from "@/app/_components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { api } from '@/trpc/react';
+import { api } from "@/trpc/react";
 
 const formSchema = z.object({
   name: z.string(),
@@ -72,11 +72,14 @@ export default function GeneralForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    return await generalMutation.mutateAsync(values);
+    console.log(values);
+    // return await generalMutation.mutateAsync(values);
   }
 
   function getCoordinatesFromMap(coords: string) {
-    form.setValue("coordinates", coords);
+    if (!coords) return;
+
+    return form.setValue("coordinates", coords);
   }
 
   return (
